@@ -146,6 +146,21 @@ Designed for a smaller deployment footprint, with **Chinese and English as its p
 
 The shared tools accept an explicit model ID. Use the quick-start and deployment instructions for your chosen release.
 
+### Command line: `audio8-tts`
+
+Installing the package adds an `audio8-tts` command. It wraps `audio8_tts_infer.py`, so every option of that script works here.
+
+```bash
+pip install -e .        # from the repository root; installs the dependencies in pyproject.toml
+
+audio8-tts \
+  --model Edge0/Audio8-TTS-Realistic-0.6b \
+  --text "Welcome to Audio8 TTS." \
+  --output outputs/welcome.wav
+```
+
+Voice cloning and batch runs use the same flags as the script (`--reference-audio`, `--reference-text`, `--input-jsonl`, `--output-dir`). Run `audio8-tts --help` for the full list. The quick start assumes a CUDA-capable GPU; the 0.1B CPU path is the ONNX runtime in `onnx_runtime_0_1b_int8/`.
+
 ## SGLang Omni Serving
 
 SGLang Omni provides paged attention, dynamic batching, and an OpenAI-compatible speech API. The 0.6B family and the 0.1B hybrid model have their own configurations. Existing performance results remain paired with their original model, hardware, and test conditions in the deployment guide.

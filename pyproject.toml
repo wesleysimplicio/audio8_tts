@@ -1,3 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audio8-tts"
+version = "0.1.0"
+description = "Command-line text-to-speech with Audio8 TTS (zero-shot voice cloning)."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "torch>=2.5.0",
+    "torchaudio>=2.5.0",
+    "transformers>=4.57.0,<5",
+    "numpy>=1.26",
+    "soundfile>=0.12",
+    "safetensors>=0.4",
+    "tqdm>=4.66",
+]
+
+[project.scripts]
+audio8-tts = "audio8_tts_infer:main"
+
+[tool.setuptools]
+py-modules = ["audio8_tts_infer", "audio8_tts_data"]
+
 [tool.ruff]
 target-version = "py310"
 line-length = 100
